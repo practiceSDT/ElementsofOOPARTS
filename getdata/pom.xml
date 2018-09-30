@@ -5,6 +5,12 @@
 	<groupId>com.test.excel</groupId>
 	<artifactId>getdata</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+		<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
