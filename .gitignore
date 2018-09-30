@@ -1,0 +1,54 @@
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+# Built application files
+*.jar
+
+# Java class files
+*.class
+ 
+# Generated files
+bin/
+gen/
+classes/
+logs/
+ 
+# Maven output folder
+target
+ 
+# Eclipse project files
+.classpath
+.project
+.metadata
+.settings
+.springBeans
+.mvn
+.factorypath
+
+# IntelliJ files
+.idea
+*.iml
+ 
+# OSX files
+.DS_Store
+ 
+# Windows files
+Thumbs.db
+ 
+# vi swap files
+*.swap
+ 
+# backup files
+*.bak
+*_bak
+testphase-analyze-searchlog/log.txt
+testphase-analyze-searchlog/external/
+testphase-analyze-searchlog/log/
+testphase-analyze-searchlog/H2
