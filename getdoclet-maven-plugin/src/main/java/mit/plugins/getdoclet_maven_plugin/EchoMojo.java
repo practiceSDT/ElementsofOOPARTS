@@ -20,6 +20,19 @@ public class EchoMojo extends AbstractMojo
         throws MojoExecutionException, MojoFailureException
     {
         getLog().info( message.toString() );
-        getLog().info( "Test." );
+        getLog().info( messageHead(new MessageObject()) );
     }
+    
+    /**
+     * Get header message from messageHead.
+     * 
+     * @parameter message output. type {@code MessageObject}
+     * @return Returns not {@code null} when object is created set default words.
+     * 
+     */
+    protected String messageHead(MessageObject mes){
+		return mes.getMesString();
+    	
+    }
+    
 }
