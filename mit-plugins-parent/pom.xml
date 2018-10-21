@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>mit.plugins</groupId>
 	<artifactId>mit-plugins-parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>mit-plugins-parent</name>
 	<packaging>pom</packaging>
 

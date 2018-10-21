@@ -10,11 +10,33 @@
 	<parent>
 		<groupId>mit.plugins</groupId>
 		<artifactId>mit-plugins-parent</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 	</parent>
 
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+	</properties>
+
+
 	<build>
-		<plugins>
+  		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<doclet>mit.testing.tool.doclet.core.DocletCoreControl</doclet>
+					<docletArtifact>
+						<groupId>mit.testing.tool</groupId>
+						<artifactId>get-doclet</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</docletArtifact>
+					<!-- 標準オプションをしていするとoptionsパラメータファイルに標準タグに対するオプションがしていされ、Javadocコマンドがエラーとなる。一旦外す -->
+					<useStandardDocletOptions>false</useStandardDocletOptions>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
@@ -80,4 +102,5 @@
 			</build>
 		</profile>
 	</profiles>
+
 </project>
