@@ -54,23 +54,29 @@
 					<goalPrefix>getdoclet</goalPrefix>
 					<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
 				</configuration>
-				<executions>
+				
+				            <executions>
+                <execution>
+                    <id>default-descriptor</id>
+                    <phase>process-classes</phase>
+                </execution>
+            </executions>
+<!-- https://stackoverflow.com/questions/18999401/basic-maven-plugin-project-not-working-mojo-plugin-descriptors-not-generating/18999968 -->				
+<!-- 				<executions>
 					<execution>
 						<id>mojo-descriptor</id>
 						<goals>
 							<goal>descriptor</goal>
 						</goals>
 					</execution>
-					
-<!-- 					<execution>
+ 					<execution>
 						<id>help-goal</id>
 						<goals>
 							<goal>helpmojo</goal>
 						</goals>
-					</execution>
- -->					
-					
+					</execution>					
 				</executions>
+ -->				
 			</plugin>
 		</plugins>
 	</build>
@@ -120,6 +126,7 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.2</version>
+			   <scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
