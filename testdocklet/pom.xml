@@ -7,9 +7,13 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>test case docklet</name>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<apache.poi.version>3.17</apache.poi.version>
+		<google.guava.version>18.0</google.guava.version>
+		<slf4j.version>1.7.9</slf4j.version>
 	</properties>
 
 	<dependencies>
@@ -63,4 +67,35 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.0.1</version>
+				<configuration>
+					<doclet>mit.testing.tool.testdocklet.TDoclet</doclet>
+					<docletArtifact>
+						<groupId>mit.testing.tool</groupId>
+						<artifactId>testdocklet</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</docletArtifact>
+					<!-- 標準オプションをしていするとoptionsパラメータファイルに標準タグに対するオプションがしていされ、Javadocコマンドがエラーとなる。一旦外す -->
+					<useStandardDocletOptions>false</useStandardDocletOptions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>nexus2rel</id>
+			<url>http://btmitsuikn:8981/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus2rel</id>
+			<url>http://btmitsuikn:8981/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 </project>

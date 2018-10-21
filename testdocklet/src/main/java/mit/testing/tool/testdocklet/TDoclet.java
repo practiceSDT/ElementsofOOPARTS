@@ -7,7 +7,10 @@ import com.sun.javadoc.Tag;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.StringTokenizer;
+import java.util.stream.Stream;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.w3c.dom.Document;
@@ -22,6 +25,13 @@ public class TDoclet {
 	private String encoding;
 
 	public static boolean start(RootDoc root) {
+		
+		Stream<ClassDoc> stream = Arrays.stream(root.classes());
+		stream.forEach(c -> 
+		Stream.of(c.getClass().getMethods())
+		.forEach(m -> System.out.println(m.getName()))
+				);
+		
 		try {
 			TDoclet doclet = new TDoclet(root.options());
 			doclet.startGeneration(root.classes());

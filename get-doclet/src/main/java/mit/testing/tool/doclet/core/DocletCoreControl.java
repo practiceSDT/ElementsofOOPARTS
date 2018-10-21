@@ -1,9 +1,12 @@
 package mit.testing.tool.doclet.core;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 import com.sun.javadoc.ClassDoc;
 import com.sun.javadoc.Doclet;
@@ -17,6 +20,27 @@ public class DocletCoreControl extends Doclet {
 
 	// entry point
 	public static boolean start(RootDoc rootDoc) {
+		
+        try(ObjectOutputStream objOutStream = 
+        new ObjectOutputStream(
+        new FileOutputStream("rootDoc.bin"))){
+            objOutStream.writeObject(rootDoc);
+        } catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		Stream<ClassDoc> stream = Arrays.stream(rootDoc.classes());
+		stream.forEach(c -> {
+			System.out.println(c.qualifiedName());
+			Stream.of(c.methods(true)).forEach(
+					m -> {
+						System.out.println("->" + m.name());
+						Stream.of(m.tags()).forEach(t ->  
+						System.out.println("-->" + t.name() + ":" + t.text()));
+					}
+					);
+		});
+		
 		File file = new File("doclet-methodlist.csv");
 
 		try {
@@ -116,7 +140,7 @@ public class DocletCoreControl extends Doclet {
 
 	private static String getParam(MethodDoc m) {
 		StringBuilder s = new StringBuilder();
-
+		
 		if (m == null || m.paramTags() == null) {
 			return "";
 		}

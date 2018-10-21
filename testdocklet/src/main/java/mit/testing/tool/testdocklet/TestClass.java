@@ -13,9 +13,14 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import lombok.Getter;
+
 class TestClass {
 	private String name;
+	
+	@Getter
 	private Map methodTable;
+	@Getter
 	private Date runTime;
 	private JUnitTestReport jUnitTestReport;
 

@@ -1,7 +1,10 @@
 package mit.testing.tool.testdocklet;
 
+import lombok.Getter;
+
 class TestMethod {
 	private String name;
+	@Getter
 	private int result;
 	private long time;
 	private JUnitTestReport jUnitTestReport;

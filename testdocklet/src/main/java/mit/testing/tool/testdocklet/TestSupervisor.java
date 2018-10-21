@@ -16,8 +16,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
-import tdoclet.TestSupervisor.1;
-import tdoclet.TestSupervisor.TestItemIdComparator;
 
 public class TestSupervisor {
 	public static final String DEFAULT_FILE_NAME = "testlist.xml";
@@ -36,7 +34,7 @@ public class TestSupervisor {
 	}
 
 	public TestSupervisor(String outputFileName, String junitReportDirectory, String dateFormat) throws ParserConfigurationException, SAXException, IOException, ParseException {
-      this.testItemTable = new TreeMap(new TestItemIdComparator((1)null));
+      this.testItemTable = new TreeMap(new TestItemIdComparator());
       this.outputFileName = outputFileName;
       this.junitReportDirectory = junitReportDirectory;
       this.testReport = new JUnitTestReport(junitReportDirectory);
@@ -132,7 +130,7 @@ public class TestSupervisor {
 		changeList.appendChild(update);
 		list = document.createElement("TestList");
 		test.appendChild(list);
-		Iterator i = this.testItemTable.values().iterator();
+		i = this.testItemTable.values().iterator();
 
 		while (i.hasNext()) {
 			TestItem each = (TestItem) i.next();

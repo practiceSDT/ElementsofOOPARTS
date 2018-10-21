@@ -14,7 +14,7 @@ public class JUnitTestReport implements TestReport {
 
 	public JUnitTestReport(String path) {
 		this.reportPath = path;
-		this.table = new HashMap();
+		this.table = new HashMap<String, TestClass>();
 	}
 
 	public int getResult(TestItem item) {
@@ -22,14 +22,14 @@ public class JUnitTestReport implements TestReport {
 		if (testClass == null) {
 			return 0;
 		} else {
-			TestMethod testMethod = (TestMethod) TestClass.access$000(testClass).get(item.getTestMethod());
-			return testMethod == null ? 0 : TestMethod.access$100(testMethod);
+			TestMethod testMethod = (TestMethod) testClass.getMethodTable().get(item.getTestMethod());
+			return testMethod.getResult();
 		}
 	}
 
 	public Date getDate(TestItem item) {
 		TestClass testClass = this.getTestClass(item);
-		return testClass == null ? null : TestClass.access$200(testClass);
+		return testClass.getRunTime();
 	}
 
 	private TestClass getTestClass(TestItem item) {
