@@ -20,5 +20,6 @@ public class EchoMojo extends AbstractMojo
         throws MojoExecutionException, MojoFailureException
     {
         getLog().info( message.toString() );
+        getLog().info( "Test." );
     }
 }
